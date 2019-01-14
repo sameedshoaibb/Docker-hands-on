@@ -109,3 +109,9 @@ and then you should be able to push it.
 [docker push YOUR_DOCKERHUB_NAME/firstimage"]
 
 docker push image_name
+
+{--- Create a new network ---}
+
+When we have to ping the container with it's name, we have to create a new network.
+For reference:
+https://www.youtube.com/watch?v=Tx12haz-4VA&index=5&list=PLH1ul2iNXl7uhEOpPBYyUVktV7nW_15sh
