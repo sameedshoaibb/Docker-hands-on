@@ -8,4 +8,6 @@ ENTRYPOINT ["apache2ctl"]
 CMD ["-D","FOREGROUND"]
 EXPOSE 80
 
-
+#FROM Alpine
+#COPY script.sh /script.sh
+#CMD ["/script.sh"]
