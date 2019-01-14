@@ -99,3 +99,13 @@ From ubuntu
 ENTRYPOINT ["echo"]
 CMD ["Hi Docker"] #it will be argument for entrypoint instruction
 #Now, the dynamic arguments will be perform smoothly.
+
+
+{---- Push repository to docker hub -----}
+
+So, this means you have to tag your image before pushing:
+[docker tag firstimage YOUR_DOCKERHUB_NAME/firstimage"]
+and then you should be able to push it.
+[docker push YOUR_DOCKERHUB_NAME/firstimage"]
+
+docker push image_name
