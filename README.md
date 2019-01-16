@@ -115,3 +115,33 @@ docker push image_name
 When we have to ping the container with it's name, we have to create a new network.
 For reference:
 https://www.youtube.com/watch?v=Tx12haz-4VA&index=5&list=PLH1ul2iNXl7uhEOpPBYyUVktV7nW_15sh
+
+{--- Docker Swarm ---}
+
+#################################### Docker swarm ##################################################### 
+
+docker swarm init --advertise-addr <ip-addr>      [[ Initialize the swarm]]
+docker service ls 								  [[ list services ]]
+docker service ps <name> 						  [[list task of services]]
+docker service create <name> <image-name> 	      [[ create new service ]]
+docker service rm <name> 						  [[ remove service ]]
+docker service scale <name>=5					  [[ scale services ]]
+docker swarm leave --force 						  [[ Leave the swarm ]]
+dokcer info | grep Swarm
+docker swarm join-token manager
+service docker start
+
+docker node ls 									  [[ List the nodes ]]
+docker node ps 									  [[ list service in nodes ]]
+
+remove node 									  [[docker node rm <id>]]
+
+############################### Practical work ##########################################################
+
+Manager: docker swarm init --advertise-addr 159.89.197.250
+	     docker node ls
+	     docker service create --name "Ang-App" -p 4200:4200 demoapp1
+	     docker service create --name frontend --replicas 5 -p 80:80/tcp bitnami/apache [Now five containers will be created on the manager & worker node]
+
+Worker: docker swarm join --token SWMTKN-1-0mgo2k12l2nel4th0p14a1tlwe8undxepss1631yysh5jqty79-1uwpl6j33otp14uyrfyj6w5au 159.89.197.250:2377
+(1- Run the tocken on the workers end )
