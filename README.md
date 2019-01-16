@@ -118,6 +118,26 @@ https://www.youtube.com/watch?v=Tx12haz-4VA&index=5&list=PLH1ul2iNXl7uhEOpPBYyUV
 
 {--- Docker Swarm ---}
 
+docker swarm init (TO initialize a machine)
+[docker swarm init --advertise-addr 159.89.197.250]
+
+We make service on our manager, in which our app is installed
+
+docker swarm join --token SWMTKN-1-03gx4eq7ea6gajku2klr9smtynnn1pji43jc0zh5xzkrgb2miv-9no536cwq57bxgwbwircw4pbv 159.89.197.250:2377
+
+Master machine is initialized. To check,write
+docker info
+
+To check the status of cluster
+docker node ls
+
+To join node with master node, run the jooin command as stated above
+
+Once the worker node is added, Now you can run any command from Master node
+
+Now create docker service
+
+####################################    Edureka   #####################################################
 #################################### Docker swarm ##################################################### 
 
 docker swarm init --advertise-addr <ip-addr>      [[ Initialize the swarm]]
@@ -129,19 +149,34 @@ docker service scale <name>=5					  [[ scale services ]]
 docker swarm leave --force 						  [[ Leave the swarm ]]
 dokcer info | grep Swarm
 docker swarm join-token manager
+docker service task <id>
 service docker start
 
 docker node ls 									  [[ List the nodes ]]
 docker node ps 									  [[ list service in nodes ]]
-
 remove node 									  [[docker node rm <id>]]
+
+{{ docker swarm cluster management }}
+docker node update --availability drain <node>    [[ It will stop the node for scheduling ]]
+docker node update --availability active <node>    [[ It will start the node for scheduling ]]
+docker node promote <node> 						  [[ Promotes the node as manager ]]
+docker node demote <node> 						  [[ Demotes the node from manager role ]]
+docker node rm <node> 							  [[ Removes the node from cluster ]]
 
 ############################### Practical work ##########################################################
 
-Manager: docker swarm init --advertise-addr 159.89.197.250
+Manager: docker swarm infoit --advertise-addr 159.89.197.250
 	     docker node ls
 	     docker service create --name "Ang-App" -p 4200:4200 demoapp1
 	     docker service create --name frontend --replicas 5 -p 80:80/tcp bitnami/apache [Now five containers will be created on the manager & worker node]
+	     docker service create --name redis redis:3.0.6
+	     docker service ls
+	     docker service task 
 
 Worker: docker swarm join --token SWMTKN-1-0mgo2k12l2nel4th0p14a1tlwe8undxepss1631yysh5jqty79-1uwpl6j33otp14uyrfyj6w5au 159.89.197.250:2377
 (1- Run the tocken on the workers end )
+
+
+docker run -it -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock dockersamples/visualizer
+57e2b70ef235
+57e2b70ef235:/#
