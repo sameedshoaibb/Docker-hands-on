@@ -108,6 +108,9 @@ So, this means you have to tag your image before pushing:
 and then you should be able to push it.
 [docker push YOUR_DOCKERHUB_NAME/firstimage"]
 
+ docker push sameedshoaib1/alpine
+
+docker tag alpine sameedshoaib1/alpine
 docker push image_name
 
 {--- Create a new network ---}
