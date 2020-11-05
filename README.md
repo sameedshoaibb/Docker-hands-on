@@ -181,5 +181,4 @@ Worker: docker swarm join --token SWMTKN-1-0mgo2k12l2nel4th0p14a1tlwe8undxepss16
 
 
 docker run -it -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock dockersamples/visualizer
-57e2b70ef235
-57e2b70ef235:/#
+57e2b70ef23
