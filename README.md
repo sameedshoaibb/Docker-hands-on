@@ -75,7 +75,9 @@ docker run -dit --net=host webserver:v2
 [ CMD VS ENTRYPOINT ]
 
 () CMD is by-default instruction which is executed when we run a container
-FROM ubuntu
+FROM ubuntu.
+CMD se override hojati hai command.
+Multiple CMD use kr skte hain lkn only the latest/last CMD will be executed.
 CMD echo "Echo hello sameed" 
 docker run -it container and the echo command will be executed
 
@@ -87,7 +89,7 @@ CMD echo "Echo hello sada"
 Now, only the sada echo will be executed
 
 [ ENTRYPOINT ]
-It is also a runtime instruction as CMD 
+It is also a runtime instruction as CMD. Jo bhiinput denge vo override krdega
 
 FROM ubuntu
 ENTRYPOINT ["echo","Hi Docker"]
